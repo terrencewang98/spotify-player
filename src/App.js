@@ -9,7 +9,7 @@ import skipBackward from './images/skipBackward.png'
 const spotifyApi = new SpotifyWebApi()
 const authEndpoint = 'https://accounts.spotify.com/authorize'
 const clientId = "515322ae70264903996d7b12aaed4aff";
-const redirectUri = "http://localhost:3000";
+const redirectUri = "https://terrencewang98.github.io/spotify-player/";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
