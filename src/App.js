@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import SpotifyWebApi from 'spotify-web-api-js'
+import Player from './Player.js'
 import './App.css'
-import play from './images/play.png'
-import pause from './images/pause.png'
-import skipForward from './images/skipForward.png'
-import skipBackward from './images/skipBackward.png'
+import personalWebsiteLink from './images/personalWebsiteLink.png'
+import githubLink from './images/githubLink.png'
+import background1 from './images/background1.jpg'
 
 const spotifyApi = new SpotifyWebApi()
 const authEndpoint = 'https://accounts.spotify.com/authorize'
 const clientId = "515322ae70264903996d7b12aaed4aff";
-const redirectUri = "https://terrencewang98.github.io/spotify-player/";
-const scopes = [
+const redirectUri = "https://terrencewang98.github.io/spotify-player/"; //"http://localhost:3000";
+const scopes = [  
   "user-read-currently-playing",
   "user-read-playback-state",
   "user-modify-playback-state"
@@ -20,8 +20,6 @@ class App extends Component {
   intervalID
   state = {
     loggedIn: false, 
-    isPlaying: false,
-    nowPlaying: { name: 'Not Playing', artists: [], albumArt: '' },
   }
 
   componentDidMount(){
@@ -30,8 +28,6 @@ class App extends Component {
     if (token) {
       spotifyApi.setAccessToken(token);
       this.setState({loggedIn: true})
-      this.getNowPlaying()
-      this.intervalID = setInterval(this.getNowPlaying.bind(this), 500)
     }
   }
 
@@ -51,74 +47,30 @@ class App extends Component {
     return hashParams;
   }
 
-  getNowPlaying(){
-    spotifyApi.getMyCurrentPlaybackState()
-      .then((response) => {
-          this.setState({
-            isPlaying: response.is_playing,
-            nowPlaying: {
-              name: response.item ? response.item.name : 'Not Playing',
-              artists: response.item ? response.item.artists.map((artist) => artist.name).join(', ') : [],  
-              albumArt: response.item ? response.item.album.images[0].url : ''
-            }
-          })
-      })
-  }
-
-  handleSkipBackwardClick(){
-    spotifyApi.skipToPrevious()
-  }
-
-  handlePlayPauseButtonClick(){
-    if(this.state.isPlaying){
-      spotifyApi.pause()
-    }
-    else{
-      spotifyApi.play()
-    }
-  }
-
-  handleSkipForwardClick(){
-    spotifyApi.skipToNext()
-  }
-
   render(){
 
     return (
-      <div>
+      <div className = "colorLayer">
+        <img className = "background-image" src = {background1}/>
         {!this.state.loggedIn && (
           <div className = 'login'>
-            <a href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}>
+            <h1 style = {{marginBottom: "0px"}}>Spotify Player</h1>
+            <div className = "buttonRow">
+              <h2>created by @terrencewang98</h2>
+              <a href="https://github.com/terrencewang98/spotify-player" target="_blank" rel="noreferrer">
+                <img className = "imgButton" src = {githubLink} />
+              </a>
+              <a href="https://terrencewang98.github.io/" target="_blank" rel="noreferrer">
+                <img className = "imgButton" src = {personalWebsiteLink} style = {{width: "55px"}} />
+              </a>
+            </div>
+            <a className = "loginButton" href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}>
               Login to Spotify
             </a>
           </div>
         )}
         {this.state.loggedIn && (
-          <div className = 'player'>
-            <div>
-              <img src = {this.state.nowPlaying.albumArt} style = {{'width': '100%'}} />
-            </div>
-            <div className = "buttons" style = {{'width': '100%', backgroundColor: '#708090'}}>
-              <button>
-                <img src = {skipBackward} onClick = {this.handleSkipBackwardClick.bind(this)} />
-              </button>
-              <button>
-                {this.state.isPlaying && (
-                  <img src = {pause} onClick = {this.handlePlayPauseButtonClick.bind(this)} />
-                )}
-                {!this.state.isPlaying && (
-                  <img src = {play} onClick = {this.handlePlayPauseButtonClick.bind(this)} />
-                )}
-              </button>
-              <button>
-                <img src = {skipForward} onClick = {this.handleSkipForwardClick.bind(this)} />
-              </button>              
-            </div>
-            <div>
-              <p>{this.state.nowPlaying.name}</p> 
-              <p>{this.state.nowPlaying.artists}</p>
-            </div>
-          </div>
+          <Player spotifyApi = {spotifyApi} />
         )}
       </div>
     )
