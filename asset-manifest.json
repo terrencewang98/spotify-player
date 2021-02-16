@@ -1,20 +1,26 @@
 {
   "files": {
-    "main.css": "/spotify-player/static/css/main.60d35a1c.chunk.css",
-    "main.js": "/spotify-player/static/js/main.8bcf2273.chunk.js",
-    "main.js.map": "/spotify-player/static/js/main.8bcf2273.chunk.js.map",
+    "main.css": "/spotify-player/static/css/main.40733000.chunk.css",
+    "main.js": "/spotify-player/static/js/main.b181d9b9.chunk.js",
+    "main.js.map": "/spotify-player/static/js/main.b181d9b9.chunk.js.map",
     "runtime-main.js": "/spotify-player/static/js/runtime-main.9b5725ab.js",
     "runtime-main.js.map": "/spotify-player/static/js/runtime-main.9b5725ab.js.map",
-    "static/js/2.08925599.chunk.js": "/spotify-player/static/js/2.08925599.chunk.js",
-    "static/js/2.08925599.chunk.js.map": "/spotify-player/static/js/2.08925599.chunk.js.map",
+    "static/js/2.4d0a8756.chunk.js": "/spotify-player/static/js/2.4d0a8756.chunk.js",
+    "static/js/2.4d0a8756.chunk.js.map": "/spotify-player/static/js/2.4d0a8756.chunk.js.map",
     "index.html": "/spotify-player/index.html",
-    "static/css/main.60d35a1c.chunk.css.map": "/spotify-player/static/css/main.60d35a1c.chunk.css.map",
-    "static/js/2.08925599.chunk.js.LICENSE.txt": "/spotify-player/static/js/2.08925599.chunk.js.LICENSE.txt"
+    "static/css/main.40733000.chunk.css.map": "/spotify-player/static/css/main.40733000.chunk.css.map",
+    "static/js/2.4d0a8756.chunk.js.LICENSE.txt": "/spotify-player/static/js/2.4d0a8756.chunk.js.LICENSE.txt",
+    "static/media/background1.05df538e.jpg": "/spotify-player/static/media/background1.05df538e.jpg",
+    "static/media/personalWebsiteLink.5bd159b0.png": "/spotify-player/static/media/personalWebsiteLink.5bd159b0.png",
+    "static/media/repeatOff.f5cdd0db.png": "/spotify-player/static/media/repeatOff.f5cdd0db.png",
+    "static/media/repeatOn.f2fcc9e9.png": "/spotify-player/static/media/repeatOn.f2fcc9e9.png",
+    "static/media/shuffleOff.f7596616.png": "/spotify-player/static/media/shuffleOff.f7596616.png",
+    "static/media/shuffleOn.b8a88c4e.png": "/spotify-player/static/media/shuffleOn.b8a88c4e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.9b5725ab.js",
-    "static/js/2.08925599.chunk.js",
-    "static/css/main.60d35a1c.chunk.css",
-    "static/js/main.8bcf2273.chunk.js"
+    "static/js/2.4d0a8756.chunk.js",
+    "static/css/main.40733000.chunk.css",
+    "static/js/main.b181d9b9.chunk.js"
   ]
 }
